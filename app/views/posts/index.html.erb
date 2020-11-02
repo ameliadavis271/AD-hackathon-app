@@ -1,9 +1,19 @@
-<h1> Welcome to the Home Page <h1>
+<% if user_signed_in? %>
+  <h1> Good to see you again, <%= current_user.email %> <h1>
+<% else %>
+  <h1> Welcome to the Home Page <h1>
+<% end %>
+
 <h3> <%= link_to "Create a New Diary Entry", new_post_path %> <h3>
+
 
 <% @posts.each do |post| %>
   <h3> Title: <%= post.title %><h3>
   <h3> Content: <%= post.content %><h3>
+  <h3> Created by: <%= post.user.email %>
+  <br>
   <%= link_to "Show", post_path(post.id) %>
-  <%= link_to "Delete", post_path(post.id), method: :delete %>
+  <% if user_signed_in? && current_user.posts.include?(post) %>
+    <%= link_to "Delete", post_path(post.id), method: :delete %>
+  <% end %>
 <% end %>
