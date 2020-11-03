@@ -1,21 +1,8 @@
-<% if user_signed_in? %>
-  <h1> Good to see you again, <%= current_user.email %> <h1>
-  <%# <h1> Good to see you again, <%= current_user.username %>
-<% else %>
-  <h1> Welcome to the Home Page <h1>
-<% end %>
-
-<%= form_tag posts_path, :method => "get" do %>
-  <%= label_tag(:search, "Search for User: ")%>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag("Search", :email => nil) %>
-  <%# <%= submit_tag("Search", :username => nil)%>
-<% end %>
-
 <h3> <%= link_to "Create a New Diary Entry", new_post_path %> <h3>
 
-
+<div class=home-container>
 <% @posts.each do |post| %>
+<div class=card>
   <h3> Title: <%= link_to post.title, post_path(post.id) %> <h3>
   <h3> <%= post.created_at.strftime("%Y/%m/%d") %> <h3>
   <h3> A <%= post.category %> Entry! <h3>
@@ -25,5 +12,5 @@
   <% if user_signed_in? && current_user.posts.include?(post) %>
     <%= link_to "Delete", post_path(post.id), method: :delete %>
   <% end %>
-  <br>
+</div>
 <% end %>

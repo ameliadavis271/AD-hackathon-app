@@ -1,0 +1,32 @@
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  background-color: cornflowerblue;
+}
+
+.topnav {
+  display: flex;
+  justify-content: center;
+}
+
+.topnav a {
+display: inline-block;
+color: #F1C4FF;;
+font-weight: bold;
+font-size: 16px;
+margin: 5px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  font: white;
+}
