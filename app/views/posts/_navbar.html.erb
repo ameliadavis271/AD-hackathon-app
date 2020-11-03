@@ -1,8 +1,29 @@
-<% if user_signed_in? %>
-  <%= link_to "Home", posts_path %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Home", posts_path %>
-  <%= link_to "Signup", new_user_registration_path %>
-  <%= link_to "Login", new_user_session_path %>
-<% end %>
+<div class=header>
+  <div class=topnav>
+  <% if user_signed_in? %>
+    <%= link_to "Home", posts_path %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Home", posts_path %>
+    <%= link_to "Signup", new_user_registration_path %>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+  </div>
+
+  <div class=welcome>
+  <% if user_signed_in? %>
+    <h1> Good to see you again, <%= current_user.email %> <h1>
+    <%# <h1> Good to see you again, <%= current_user.username %>
+  <% else %>
+    <h1> Welcome to the Home Page <h1>
+  <% end %>
+  </div>
+
+  <div class=search>
+  <%= form_tag posts_path, :method => "get" do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search", :email => nil) %>
+    <%# <%= submit_tag("Search", :username => nil)%>
+  <% end %>
+  </div>
+</div>
