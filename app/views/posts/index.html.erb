@@ -7,7 +7,7 @@
   <h3> <%= post.created_at.strftime("%Y/%m/%d") %> <h3>
   <h3> A <%= post.category %> Entry! <h3>
   <h3> Content: <%= post.content %><h3>
-  <h3> Created by: <%= post.user.email %> <h3>
+  <h3> Created by: <%= post.user.username %> <h3>
   <%# <h3> Created by: <%= post.user.username %>
   <% if user_signed_in? && current_user.posts.include?(post) %>
     <%= link_to "Delete", post_path(post.id), method: :delete %>
