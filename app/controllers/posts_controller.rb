@@ -4,7 +4,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
 
   def index
-    @posts = Post.all
+    @posts = Post.search(params[:search])
   end
 
   def show
@@ -27,7 +27,7 @@ before_action :authenticate_user!, except: [:index, :show]
 private
 
   def post_params
-    params.require(:post).permit(:title, :content, :category)
+    params.require(:post).permit(:title, :content, :category, :search)
   end
 
   def set_post
