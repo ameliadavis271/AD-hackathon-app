@@ -3,5 +3,6 @@
   <%= f.text_field :title %>
   <%= f.label :content %>
   <%= f.text_field :content %>  
+  <%= f.select :category, options_for_select(category_selection) %>
   <%= f.submit id: "submit" %>
 <% end %>
