@@ -19,6 +19,15 @@ before_action :authenticate_user!, except: [:index, :show]
     redirect_to posts_path
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.update(post_params)
+    redirect_to posts_path
+  end
+
   def destroy
     @post.destroy
     redirect_to posts_path

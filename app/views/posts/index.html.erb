@@ -10,6 +10,7 @@
   <h3> Created by: <%= post.user.username %> <h3>
   <%# <h3> Created by: <%= post.user.username %>
   <% if user_signed_in? && current_user.posts.include?(post) %>
+  ​  <%= link_to "Edit", edit_post_path(post.id) %>
     <%= link_to "Delete", post_path(post.id), method: :delete %>
   <% end %>
 </div>
