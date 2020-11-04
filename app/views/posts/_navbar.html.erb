@@ -1,13 +1,16 @@
 <div class=header>
   <div class=topnav>
-  <% if user_signed_in? %>
-    <%= link_to "Home", posts_path %>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Home", posts_path %>
-    <%= link_to "Signup", new_user_registration_path %>
-    <%= link_to "Login", new_user_session_path %>
-  <% end %>
+    <section id=site_links_area> 
+      <%= link_to "Home", posts_path %>
+    </section>
+    <section id=auth_links_area> 
+      <% if user_signed_in? %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Signup", new_user_registration_path %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
+    </section>
   </div>
 
   <div class=welcome>
@@ -23,7 +26,6 @@
   <%= form_tag posts_path, :method => "get" do %>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag("Search", :email => nil) %>
-    <%# <%= submit_tag("Search", :username => nil)%>
   <% end %>
   </div>
 </div>
